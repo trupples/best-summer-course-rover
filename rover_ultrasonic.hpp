@@ -1,4 +1,4 @@
-#define ULTRASONIC_MM_PER_US 2.9388 // calibrate if needed!
+#define ULTRASONIC_MM_PER_US 0.34027
 #define ULTRASONIC_TRIG_PIN 4
 #define ULTRASONIC_ECHO_PIN 2
 
