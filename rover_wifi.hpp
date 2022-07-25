@@ -8,7 +8,8 @@
 
 void rover_wifi_setup() {
   Serial.print("Connecting to wifi");
-  
+
+  WiFi.setHostname(MDNS_NAME);
   WiFi.begin(SSID, PASSWORD);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
