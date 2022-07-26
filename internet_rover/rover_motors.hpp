@@ -2,6 +2,8 @@
 #define PWM_MIN 140 // calibrate to be the lowest number for which the wheel spins
 #define PWM_MAX 200 // calibrate so the max speed isn't very fast
 
+unsigned long motor_stop_time;
+
 void set_left_motor(float x) {
   if(x < -1) x = -1;
   if(x > 1) x = 1;

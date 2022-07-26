@@ -83,6 +83,7 @@ esp_err_t index_handler(httpd_req_t *req) {  httpd_resp_set_type(req, "text/html
 
 esp_err_t command_handler(httpd_req_t *req) {
   int buf_len = httpd_req_get_url_query_len(req) + 1;
+  motor_stop_time = millis() + 10 * 1000; // default to 10 seconds
   if (buf_len > 1) {
       char *buf = (char*)malloc(buf_len);
       if (httpd_req_get_url_query_str(req, buf, buf_len) == ESP_OK) {
@@ -90,6 +91,7 @@ esp_err_t command_handler(httpd_req_t *req) {
 
           if (httpd_query_key_value(buf, "left", param, sizeof(param)) == ESP_OK) set_left_motor(atof(param));
           if (httpd_query_key_value(buf, "right", param, sizeof(param)) == ESP_OK) set_right_motor(atof(param));
+          if (httpd_query_key_value(buf, "milliseconds", param, sizeof(param)) == ESP_OK) motor_stop_time = millis() + atoi(param);
       }
       free(buf);
   }
