@@ -21,8 +21,8 @@ def get_image():
 def get_sensor():
 	return requests.get(BASE_URL + "/sensors").json().get("ultrasonic")
 
-def set_motors(left, right):
-	requests.get(f"{BASE_URL}/command?left={left:.2}&right={right:.2}")
+def set_motors(left, right, timeout_milliseconds):
+	requests.get(f"{BASE_URL}/command?left={left:.2}&right={right:.2}&milliseconds={timeout_milliseconds}")
 
 def find_largest_object(im):
 	h, w = im.shape
